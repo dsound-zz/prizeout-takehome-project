@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { GiftCard } from '../../common';
-import Classnames from 'classnames';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import { v4 as uuid_v4 } from 'uuid';
-import { PrizeoutOfferValueOptions, PrizeoutOffer } from '../../../slices/offers-slice';
+import { PrizeoutOfferValueOptions } from '../../../slices/offers-slice';
 
 import CheckoutButton from './checkout-button';
 
@@ -61,7 +60,7 @@ const CheckoutPanelView: React.FC<any> = ({ selectedOffer }): React.ReactElement
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">
-                        <CheckoutButton />
+                        <CheckoutButton selectedGiftOffer={selectedGiftOffer} />
                     </section>
                 </div>
             </div>

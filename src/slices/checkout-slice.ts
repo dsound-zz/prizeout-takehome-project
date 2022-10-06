@@ -34,6 +34,7 @@ export const checkoutSlice = createSlice({
         getOffer(state, action: PayloadAction<any>) {
             state.offer = action.payload;
         },
+        submitOffer(state, action: PayloadAction<any>) {},
     },
 });
 
