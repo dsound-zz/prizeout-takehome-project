@@ -1,0 +1,30 @@
+@import '../../../utils/styles/utility.less';
+
+.checkout-confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0.5em 1em 0.5em;
+    margin: 1rem;
+
+    h2 {
+        font-size: var(--font-size-xxl);
+        color: var(--color-grey-900);
+    }
+
+    &__message {
+        font-size: var(--font-size-l);
+        margin-top: 1rem;
+        width: 100%;
+        max-width: 15rem;
+    }
+
+    &__done {
+        width: 20rem;
+        border: var(--border-radius-secondary);
+        border-radius: 10px;
+        background: var(--color-blue-300);
+        margin-top: 2rem;
+        padding: 1em;
+    }
+}

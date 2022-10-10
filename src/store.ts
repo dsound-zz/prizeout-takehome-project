@@ -10,6 +10,7 @@ const store = configureStore({
         checkout: checkoutReducer,
         common: commonReducer,
         offers: offerConfigReducer,
+        reset: null,
     },
 });
 
@@ -21,6 +22,7 @@ export const RootInitialState: RootState = {
     checkout: checkoutInitialState,
     common: commonInitialState,
     offers: offersInitialState,
+    reset: null,
 };
 
 export default store;

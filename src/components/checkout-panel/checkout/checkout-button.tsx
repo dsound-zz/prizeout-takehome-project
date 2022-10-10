@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../common';
 import { PrizeoutOfferValueOptions } from '../../../slices/offers-slice';
-import { submitCheckout } from '../../../slices/checkout-slice';
+import { setOffer, setCheckoutView, setSubmitted } from '../../../slices/checkout-slice';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store';
@@ -16,7 +16,9 @@ const CheckoutButton = ({ selectedGiftOffer }: CheckoutButtonProps) => {
     const dispatch = useDispatch<AppDispatch>();
     const buttonText = 'Prizeout Gift Card';
     const buttonHandler = () => {
-        dispatch(submitCheckout(selectedGiftOffer));
+        dispatch(setOffer(selectedGiftOffer));
+        dispatch(setCheckoutView('checkout-confirmation'));
+        dispatch(setSubmitted(true));
     };
 
     return (

@@ -12,16 +12,14 @@ const CheckoutPanelView: React.FC<any> = ({ selectedOffer }): React.ReactElement
     const [selectedGiftOffer, setSelectedGiftOffer] = useState<PrizeoutOfferValueOptions | null>(null);
 
     const centsConverter = (cents: number) => {
-        const converted = (cents / 100).toString();
-        console.log(converted);
-        return `$${converted}`;
+        const giftTotal = (cents / 100).toString();
+        return `$${giftTotal}`;
     };
 
     const selectGift = (giftCardOffer: PrizeoutOfferValueOptions) => {
         setSelectedGiftOffer(giftCardOffer);
     };
 
-    console.log(selectedGiftOffer);
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">
@@ -36,9 +34,9 @@ const CheckoutPanelView: React.FC<any> = ({ selectedOffer }): React.ReactElement
                             />
                         )}
                     </section>
-                    <section className="checkout__valueOptions">
-                        <h3 className="checkout__valueHeader">Select a value option</h3>
-                        <div className="checkout__valueSelections">
+                    <section className="checkout__value-options">
+                        <h3 className="checkout__value-header">{selectedOffer && 'Select a value option'}</h3>
+                        <div className="checkout__value-selections">
                             {selectedOffer &&
                                 selectedOffer?.giftcard_list.map(
                                     (giftCardOffer: PrizeoutOfferValueOptions, idx: number) => (

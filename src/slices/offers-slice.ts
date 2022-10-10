@@ -4,6 +4,7 @@ import { RootState } from '../store';
 // Define a type for the slice state
 export interface OffersState {
     offers?: PrizeoutOffers;
+    reset: null;
 }
 
 // Define the initial state
@@ -658,6 +659,7 @@ export const offersInitialState: OffersState = {
             type: 'vertical-offers',
         },
     ],
+    reset: null,
 };
 
 type PrizeoutOffers = PrizeoutOfferViews[];
@@ -702,9 +704,13 @@ type OffersRequest = {
 export const offersSlice = createSlice({
     initialState: offersInitialState,
     name: 'offers',
-    reducers: {},
+    reducers: {
+        resetOffers: () => offersInitialState,
+    },
 });
 
-export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.offers;
+export const selectOffers = ({ offers, reset }: RootState): PrizeoutOffers => offers.offers;
+
+export const { resetOffers } = offersSlice.actions;
 
 export default offersSlice.reducer;
