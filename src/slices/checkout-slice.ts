@@ -6,6 +6,9 @@ export interface CheckoutSlice {
     loading: boolean;
     view: ViewEnum;
     offer: any;
+    finalOffer: any;
+    submitted: boolean;
+    reset: () => void;
 }
 
 export type ViewEnum = 'checkout' | 'checkout-confirmation';
@@ -15,6 +18,9 @@ export const checkoutInitialState: CheckoutSlice = {
     loading: false,
     view: 'checkout',
     offer: null,
+    finalOffer: null,
+    submitted: false,
+    reset: null,
 };
 
 export const checkoutSlice = createSlice({
@@ -34,11 +40,18 @@ export const checkoutSlice = createSlice({
         getOffer(state, action: PayloadAction<any>) {
             state.offer = action.payload;
         },
-        submitOffer(state, action: PayloadAction<any>) {},
+        setOffer(state, action: PayloadAction<any>) {
+            state.finalOffer = action.payload;
+        },
+        setSubmitted(state, action: PayloadAction<any>) {
+            state.submitted = action.payload;
+        },
+        resetCheckout: () => checkoutInitialState,
     },
 });
 
-export const { setCheckoutView, toggleIsLoading, toggleIsSide, getOffer } = checkoutSlice.actions;
+export const { setCheckoutView, toggleIsLoading, toggleIsSide, getOffer, setOffer, resetCheckout, setSubmitted } =
+    checkoutSlice.actions;
 
 export const selectLoading = ({ checkout: { loading } }: RootState): boolean => loading;
 
@@ -51,5 +64,11 @@ export const selectCheckoutIsSide = ({ checkout }: RootState): boolean => {
 export const selectOffer = ({ checkout }: RootState): any => {
     return checkout.offer;
 };
+
+export const submitOffer = ({ checkout }: RootState): any => {
+    return checkout.finalOffer;
+};
+
+export const isSubmitted = ({ checkout: { submitted } }: RootState): boolean => submitted;
 
 export default checkoutSlice.reducer;
